@@ -1,0 +1,121 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/* #818589 */
+/* #ffd700 */
+/* #121212 */
+
+
+*,
+      ::before,
+      ::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        
+        justify-content: center;
+        
+        background-color: #121212;
+      }
+
+      ul {
+        display: flex;
+        list-style-type: none;
+      }
+
+      li {
+        margin: 0 1.5em;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        font-size: 1.15rem;
+        font-family: sans-serif;
+        background-image: linear-gradient(#818589 50%, #ffd700 50%);
+        background-size: 100% 200%;
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        transition: all 550ms ease-in-out;
+      }
+
+      .nav-link:hover {
+        background-position: 0% 100%;
+      }
+
+
+@media(max-width:576px){
+  ul{
+    flex-direction:column;
+  }
+  
+  li{
+    margin: 1.5em 0;
+  }
+}
+
+
+
+
+
+:root {
+	--size: 30px;
+	--path: 200px;
+	--box-radius: 30%;
+	--main-color: rgba(255, 128, 0, 0.8);
+	--main-border: 2px solid rgba(128, 128, 128, 0.4);
+	--main-gradient: linear-gradient(to bottom right, red, orange, yellow, green, blue, indigo, violet);
+	--main-gradient: conic-gradient(red, orange, yellow, green, blue, indigo, violet);
+}
+
+body {
+	perspective: 800px;
+	margin: 0;
+	height: 100vh;
+	align-items: center;
+	justify-content: center;
+	background-color: #111;
+	overflow: hidden;
+}
+
+.container {
+	position: relative;
+	transform-style: preserve-3d;
+	animation: rotateScene 10s infinite linear;
+}
+
+.sphere {
+	position: absolute;
+	width: var(--size);
+	height: var(--size);
+	border-radius: var(--box-radius);
+	border: var(--main-border);
+	background: var(--main-gradient);
+	animation: moveSphere 2s infinite linear alternate;
+}
+
+@keyframes rotateScene {
+	from {
+		transform: rotateY(20deg) rotateZ(0deg);
+	}
+	to {
+		transform: rotateY(20deg) rotateZ(360deg);
+	}
+}
+
+@keyframes moveSphere {
+	from {
+		transform: translateY(calc(var(--path) / 2))
+			translateX(calc(-1 * var(--path) / 2)) rotateZ(0);
+	}
+	to {
+		transform: translateY(calc(-1 * var(--path) / 2))
+			translateX(calc(var(--path) / 2)) rotateZ(720deg);
+	}
+}
